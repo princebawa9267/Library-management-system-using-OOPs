@@ -18,6 +18,87 @@ The system uses an in-memory `ArrayList` to manage data, making it a straightfor
 
 ---
 
+## 🏗️ Classes & Relationships
+**1. Library Class**
+The central engine of the system, managing all core operations and data collections.
+```
+    public class Library {
+        private List<User> users;       // Aggregation: Library HAS-A list of Users
+        private List<Book> books;       // Aggregation: Library HAS-A list of Books
+    }
+```
+
+_Relationships:_
+- ✅ Aggregation with User and Book (Users and Books can conceptually exist without the Library).
+
+_Methods Used:_
+- addUser(), addBook() → To populate the library's collections.
+- issueBook() → Finds a user and a book, validates, and links them.
+- returnBook() → Finds a book, validates, and unlinks it from a user.
+
+_issueBook() Workflow:_
+```
+graph TD
+    A[Find User by ID] --> B{User Exists?};
+    B -->|Yes| C[Find Book by ISBN];
+    C --> D{Book Exists & Available?};
+    D -->|Yes| E[Add Book to User's List];
+    E --> F[Mark Book as Unavailable];
+```
+**2. User Class**
+Represents a student member who can borrow books.
+```
+class User {
+    private static Long sequence = 0L; // For auto-generating IDs
+    private final Long id;             // Unique, auto-incremented library ID
+    private final String name;
+    private final Long uniRollNo;        // University-provided roll number
+    private final Course course;
+    private List<Book> borrowedBooks;  // Association: User HAS-A list of borrowed Books
+}
+```
+
+_Relationships:_
+- ✅ Association with Book (A user can have multiple borrowed books).
+
+_Methods Used:_
+- addBook() → Adds a book to the user's borrowedBooks list.
+- removeBook() → Removes a book from the user's list upon return.
+
+**3. Book Class**
+Represents a single book in the library's catalog.
+```
+class Book {
+    private final String isbn;          // Unique identifier (Immutable)
+    private final String author;
+    private final String name;
+
+    private boolean isAvailable;
+    private Long bookIssuedToLibraryId; // Tracks which user has the book
+}
+```
+_Relationships:_ 
+- A core entity, does not own other custom objects.
+
+_Methods Used:_
+- isBookAvailable() → Checks the current availability status.
+- setAvailable() → Updates the book's status when issued or returned.
+
+**4. Course Enum**
+A type-safe enumeration to define a fixed set of valid courses for users.
+```
+enum Course {
+    BTECH_COMPUTER_SCIENCE,
+    BTECH_MECHANICAL_ENGINEER,
+    BCA,
+    // ... and others
+}
+```
+
+_Purpose:_
+- Ensures that users can only be created with valid, pre-defined courses, preventing data errors.
+
+
 ## 💻 Example Usage
 
 ``` bash
@@ -89,86 +170,6 @@ Library-Management-System/
     └── Course.java     # Enum for courses
 ```
 
-## 🏗️ Classes & Relationships
-**1. Library Class**
-The central engine of the system, managing all core operations and data collections.
-```
-    public class Library {
-        private List<User> users;       // Aggregation: Library HAS-A list of Users
-        private List<Book> books;       // Aggregation: Library HAS-A list of Books
-    }
-```
-
-_Relationships:_
-✅ Aggregation with User and Book (Users and Books can conceptually exist without the Library).
-
-_Methods Used:_
-- addUser(), addBook() → To populate the library's collections.
-- issueBook() → Finds a user and a book, validates, and links them.
-- returnBook() → Finds a book, validates, and unlinks it from a user.
-
-_issueBook() Workflow:_
-```
-graph TD
-    A[Find User by ID] --> B{User Exists?};
-    B -->|Yes| C[Find Book by ISBN];
-    C --> D{Book Exists & Available?};
-    D -->|Yes| E[Add Book to User's List];
-    E --> F[Mark Book as Unavailable];
-```
-**2. User Class**
-Represents a student member who can borrow books.
-```
-class User {
-    private static Long sequence = 0L; // For auto-generating IDs
-    private final Long id;             // Unique, auto-incremented library ID
-    private final String name;
-    private final Long uniRollNo;        // University-provided roll number
-    private final Course course;
-    private List<Book> borrowedBooks;  // Association: User HAS-A list of borrowed Books
-}
-```
-
-_Relationships:_
-- ✅ Association with Book (A user can have multiple borrowed books).
-
-_Methods Used:_
-- addBook() → Adds a book to the user's borrowedBooks list.
-- removeBook() → Removes a book from the user's list upon return.
-
-**3. Book Class**
-Represents a single book in the library's catalog.
-```
-class Book {
-    private final String isbn;          // Unique identifier (Immutable)
-    private final String author;
-    private final String name;
-
-    private boolean isAvailable;
-    private Long bookIssuedToLibraryId; // Tracks which user has the book
-}
-```
-_Relationships:_ 
-- A core entity, does not own other custom objects.
-
-_Methods Used:_
-- isBookAvailable() → Checks the current availability status.
-- setAvailable() → Updates the book's status when issued or returned.
-
-**4. Course Enum**
-A type-safe enumeration to define a fixed set of valid courses for users.
-```
-enum Course {
-    BTECH_COMPUTER_SCIENCE,
-    BTECH_MECHANICAL_ENGINEER,
-    BCA,
-    // ... and others
-}
-```
-
-_Purpose:_
-- Ensures that users can only be created with valid, pre-defined courses, preventing data errors.
-
 ## 🛠️ How It Works
 - The application's logic is centered around an interactive loop that processes user commands.
 - The Main class initializes a Library object and pre-loads it with sample data.
@@ -237,6 +238,7 @@ This project was built to demonstrate several fundamental software engineering c
 
 - This project was developed with assistance from AI tools for guidance and documentation.
 - Google Gemini: Helped structure, write, and refine this README.md file by merging concepts from a previous project.
+
 
 
 
