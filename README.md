@@ -146,6 +146,7 @@ This project was built to demonstrate several fundamental software engineering c
    ```
 
 ## 🔮 Future Enhancements
+
 - Data Persistence: Implement file I/O (CSV/JSON) or a lightweight database (SQLite) to save data between sessions.
 - Advanced Error Handling: Add try-catch blocks to gracefully handle invalid user inputs (e.g., text instead of numbers).
 - Search Functionality: Add features to search for books by title or author, and users by name.
@@ -153,8 +154,10 @@ This project was built to demonstrate several fundamental software engineering c
 - Fine/Due Date System: Implement logic to calculate due dates for borrowed books and manage fines for late returns.
 
 ## 💬 Acknowledgements
+
 -- This project was developed with assistance from AI tools for guidance and documentation.
 -- Google Gemini: Helped structure, write, and refine this README.md file by merging concepts from a previous project.
+
 
 
 
