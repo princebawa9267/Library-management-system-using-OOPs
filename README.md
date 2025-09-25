@@ -79,6 +79,7 @@ Choose (1-8) from above options : 8
 
 ## 📂 Project Structure
 
+```bash
 Library-Management-System/
 └── src/
     ├── Main.java       # Entry point, menu loop
@@ -86,7 +87,7 @@ Library-Management-System/
     ├── User.java       # Student data model
     ├── Book.java       # Book data model
     └── Course.java     # Enum for courses
-
+```
 
 ## 🛠️ How It Works
 - The application's logic is centered around an interactive loop that processes user commands.
@@ -100,6 +101,7 @@ Library-Management-System/
 
 ## Application Flow Diagram
 
+```
 graph TD
     A[Start] --> B{Initialize Library};
     B --> C{Pre-load Dummy Users & Books};
@@ -111,6 +113,8 @@ graph TD
     H --> D;
     G -- 8 --> I[Exit Program];
     I --> J[End];
+
+```
 
 ## 💡 Design Choices & Key Concepts
 
@@ -151,6 +155,7 @@ This project was built to demonstrate several fundamental software engineering c
 ## 💬 Acknowledgements
 -- This project was developed with assistance from AI tools for guidance and documentation.
 -- Google Gemini: Helped structure, write, and refine this README.md file by merging concepts from a previous project.
+
 
 
 
