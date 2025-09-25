@@ -155,8 +155,9 @@ This project was built to demonstrate several fundamental software engineering c
 
 ## 💬 Acknowledgements
 
--- This project was developed with assistance from AI tools for guidance and documentation.
--- Google Gemini: Helped structure, write, and refine this README.md file by merging concepts from a previous project.
+- This project was developed with assistance from AI tools for guidance and documentation.
+- Google Gemini: Helped structure, write, and refine this README.md file by merging concepts from a previous project.
+
 
 
 
