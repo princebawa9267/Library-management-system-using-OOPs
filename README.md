@@ -20,7 +20,7 @@ The system uses an in-memory `ArrayList` to manage data, making it a straightfor
 
 ## 💻 Example Usage
 
-
+``` bash
 Hello sir, Welcome 
 
 
@@ -75,7 +75,7 @@ Books borrowed : NULL
 ...
 8. Exit
 Choose (1-8) from above options : 8
-
+```
 
 ## 📂 Project Structure
 
@@ -151,6 +151,7 @@ This project was built to demonstrate several fundamental software engineering c
 ## 💬 Acknowledgements
 -- This project was developed with assistance from AI tools for guidance and documentation.
 -- Google Gemini: Helped structure, write, and refine this README.md file by merging concepts from a previous project.
+
 
 
 
